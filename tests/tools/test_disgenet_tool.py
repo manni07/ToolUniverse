@@ -27,7 +27,7 @@ class TestDisGeNETToolDirect:
 
     def test_missing_api_key(self, tool_config):
         """Test error when API key is missing."""
-        with patch.dict(os.environ, {"DISGENET_API_KEY": ""}, clear=True):
+        with patch.dict(os.environ, {"DISGENET_API_KEY": ""}, clear=False):
             from tooluniverse.disgenet_tool import DisGeNETTool
             tool = DisGeNETTool(tool_config)
             result = tool.run({"operation": "search_gene", "gene": "BRCA1"})
