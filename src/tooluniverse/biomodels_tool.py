@@ -40,7 +40,22 @@ class BioModelsRESTTool(BaseRESTTool):
         self, response: requests.Response, url: str
     ) -> Dict[str, Any]:
         """Process BioModels API response."""
-        data = response.json()
+        try:
+            data = response.json()
+        except ValueError:
+            text = response.text or ""
+            content_type = response.headers.get("Content-Type", "")
+            return {
+                "status": "error",
+                "error": (
+                    "BioModels returned a non-JSON response. The endpoint may "
+                    "have moved, be temporarily unavailable, or require a "
+                    "different request format."
+                ),
+                "url": url,
+                "content_type": content_type,
+                "detail": text[:500],
+            }
 
         # Build result
         result = {
