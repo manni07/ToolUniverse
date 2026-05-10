@@ -25,4 +25,6 @@ def test_biomodels_non_json_response_returns_diagnostic():
     assert result["status"] == "error"
     assert "non-JSON" in result["error"]
     assert result["content_type"] == "text/html"
-    assert result["detail"] == "<html>Moved</html>"
+    assert result["response_snippet"] == "<html>Moved</html>"
+    assert result["retryable"] is True
+    assert "BioModels" in result["suggestion"]

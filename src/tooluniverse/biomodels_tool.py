@@ -45,16 +45,18 @@ class BioModelsRESTTool(BaseRESTTool):
         except ValueError:
             text = response.text or ""
             content_type = response.headers.get("Content-Type", "")
+            retryable = "text/html" in content_type.lower() or text.lstrip().startswith("<")
             return {
                 "status": "error",
-                "error": (
-                    "BioModels returned a non-JSON response. The endpoint may "
-                    "have moved, be temporarily unavailable, or require a "
-                    "different request format."
-                ),
+                "error": "BioModels returned a non-JSON response",
                 "url": url,
                 "content_type": content_type,
-                "detail": text[:500],
+                "response_snippet": text[:200],
+                "retryable": retryable,
+                "suggestion": (
+                    "BioModels may have returned an HTML maintenance or redirect page. "
+                    "Check the endpoint URL, request parameters, and service availability."
+                ),
             }
 
         # Build result
