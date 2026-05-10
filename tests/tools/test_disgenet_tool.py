@@ -60,6 +60,36 @@ class TestDisGeNETToolDirect:
         assert result["status"] == "success"
         assert len(result["data"]["associations"]) > 0
 
+    @patch("tooluniverse.disgenet_tool.requests.get")
+    def test_search_gene_empty_result_includes_diagnostic(self, mock_get, tool):
+        """Test empty gene search includes a troubleshooting diagnostic."""
+        mock_response = MagicMock()
+        mock_response.json.return_value = {"results": [], "count": 0}
+        mock_response.raise_for_status = MagicMock()
+        mock_get.return_value = mock_response
+
+        result = tool.run({"operation": "search_gene", "gene": "UNKNOWN"})
+
+        assert result["status"] == "success"
+        assert result["data"]["count"] == 0
+        assert "diagnostic" in result["metadata"]
+        assert "api.disgenet.com" in result["metadata"]["api_url"]
+
+    @patch("tooluniverse.disgenet_tool.requests.get")
+    def test_search_disease_empty_result_includes_diagnostic(self, mock_get, tool):
+        """Test empty disease search includes a troubleshooting diagnostic."""
+        mock_response = MagicMock()
+        mock_response.json.return_value = {"results": [], "count": 0}
+        mock_response.raise_for_status = MagicMock()
+        mock_get.return_value = mock_response
+
+        result = tool.run({"operation": "search_disease", "disease": "UNKNOWN"})
+
+        assert result["status"] == "success"
+        assert result["data"]["count"] == 0
+        assert "diagnostic" in result["metadata"]
+        assert "api.disgenet.com" in result["metadata"]["api_url"]
+
 
 class TestDisGeNETToolInterface:
     """Test DisGeNET tool via ToolUniverse interface (Level 2)."""
