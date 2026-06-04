@@ -40,12 +40,18 @@ default_tool_files = {
     "enrichr_ext": os.path.join(current_dir, "data", "enrichr_ext_tools.json"),
     "HumanBase": os.path.join(current_dir, "data", "humanbase_tools.json"),
     "OpenAlex": os.path.join(current_dir, "data", "openalex_tools.json"),
+    # BGPT - structured full-text study evidence (methods, sample size,
+    # limitations, conflicts, how_to_falsify). Free for 50 results, then
+    # BGPT_API_KEY. Requested in issue #204.
+    "bgpt": os.path.join(current_dir, "data", "bgpt_tools.json"),
     # Literature search tools
     "literature_search": os.path.join(
         current_dir, "data", "literature_search_tools.json"
     ),
     "arxiv": os.path.join(current_dir, "data", "arxiv_tools.json"),
     "crossref": os.path.join(current_dir, "data", "crossref_tools.json"),
+    # Retraction / correction status check (Crossref + Retraction Watch data)
+    "retraction": os.path.join(current_dir, "data", "retraction_tools.json"),
     "simbad": os.path.join(current_dir, "data", "simbad_tools.json"),
     "dblp": os.path.join(current_dir, "data", "dblp_tools.json"),
     "pubmed": os.path.join(current_dir, "data", "pubmed_tools.json"),
@@ -284,6 +290,8 @@ default_tool_files = {
     "ensembl": os.path.join(current_dir, "data", "ensembl_tools.json"),
     "clinvar": os.path.join(current_dir, "data", "clinvar_tools.json"),
     "intervar": os.path.join(current_dir, "data", "intervar_tools.json"),
+    # GeneBe - independent ACMG/AMP auto-classifier (+ AlphaMissense, gnomAD)
+    "genebe": os.path.join(current_dir, "data", "genebe_tools.json"),
     "cancervar": os.path.join(current_dir, "data", "cancervar_tools.json"),
     "geo": os.path.join(current_dir, "data", "geo_tools.json"),
     "dbsnp": os.path.join(current_dir, "data", "dbsnp_tools.json"),
@@ -378,6 +386,10 @@ default_tool_files = {
     "sabiork": os.path.join(current_dir, "data", "sabiork_tools.json"),
     # SAbDab - Structural Antibody Database
     "sabdab": os.path.join(current_dir, "data", "sabdab_tools.json"),
+    # Antibody Registry - RRID resolution + search for research antibodies
+    "antibody_registry": os.path.join(
+        current_dir, "data", "antibody_registry_tools.json"
+    ),
     # IMGT - International ImMunoGeneTics Information System
     "imgt": os.path.join(current_dir, "data", "imgt_tools.json"),
     # Metabolite tools - PubChem + CTD (replaces broken HMDB API)
@@ -434,6 +446,8 @@ default_tool_files = {
     "swissdock": os.path.join(current_dir, "data", "swissdock_tools.json"),
     # LIPID MAPS - Lipid Structure Database (lipidomics)
     "lipidmaps": os.path.join(current_dir, "data", "lipidmaps_tools.json"),
+    # SwissLipids - SIB lipid database (independent of LIPID MAPS; adds adduct m/z)
+    "swisslipids": os.path.join(current_dir, "data", "swisslipids_tools.json"),
     # USDA FoodData Central - Food composition and nutrient database
     "fooddata_central": os.path.join(
         current_dir, "data", "fooddata_central_tools.json"
