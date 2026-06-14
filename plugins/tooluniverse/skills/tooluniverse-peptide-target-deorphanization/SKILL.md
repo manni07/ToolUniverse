@@ -102,6 +102,8 @@ Six phases; the scripts automate 1–4 (and the Phase-5 dry run). **Full detail 
 
 ---
 
-## Validation
+## Validation & test set
 
-Validated on the **exendin-4 → GLP1R control**: recovers the class-B panel `{GCGR, GHRHR, GIPR, GLP1R, GLP2R, SCTR}`, flags GLP1R as the (negative) hypothesized target, and promotes GIPR to Tier 1 — the deorphanization re-ranking, produced with zero API keys. Also validated on non-GPCR targets (ion channel, RTK, protease, cytokine receptor). The full step-by-step (control **and** the real "binds in the source organism, not in mouse" case) is in `references/phases.md`.
+Validated on the **exendin-4 → GLP1R control**: recovers the class-B panel `{GCGR, GHRHR, GIPR, GLP1R, GLP2R, SCTR}`, flags GLP1R as the (negative) hypothesized target, and promotes GIPR to Tier 1 — the deorphanization re-ranking, produced with zero API keys. The full step-by-step (control **and** the real "binds in the source organism, not in mouse" case) is in `references/phases.md`.
+
+Reproducible test prompts + checkable assertions are in **`evals/evals.json`** (the exendin-4 control, the source-organism/mouse-negative case, and a non-GPCR seedless case). To check the skill still behaves, run a prompt through it and verify the output against that eval's `assertions`.

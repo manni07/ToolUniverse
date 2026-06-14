@@ -1123,6 +1123,7 @@ default_tool_files = {
         current_dir, "data", "proteomicsdb_meltome_tools.json"
     ),
     "cluspro": os.path.join(current_dir, "data", "cluspro_tools.json"),
+    "conoserver": os.path.join(current_dir, "data", "conoserver_tools.json"),
     # MEME Suite - Motif analysis (FIMO scan, MEME discovery, TOMTOM comparison)
     "meme": os.path.join(current_dir, "data", "meme_tools.json"),
     # CellMarker 2.0 - Curated cell type markers for scRNA-seq annotation

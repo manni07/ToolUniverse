@@ -90,6 +90,8 @@ STATIC_LAZY_REGISTRY = {
     "ClinVarGetVariantDetails": "clinvar_tool",
     "ClinVarRESTTool": "clinvar_tool",
     "ClinVarSubmittedRecordsTool": "clinvar_submitted_tool",
+    "ConoServerGetConopeptideTool": "conoserver_tool",
+    "ConoServerSearchConopeptidesTool": "conoserver_tool",
     "DBAASPGetPeptideTool": "dbaasp_tool",
     "DBAASPSearchPeptidesTool": "dbaasp_tool",
     "HLALigandAtlasTool": "hlaligandatlas_tool",
