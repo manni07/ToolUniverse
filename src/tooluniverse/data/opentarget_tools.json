@@ -26,7 +26,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384"
+                "efoId": "MONDO_0005011"
             }
         ],
         "return_schema": {
@@ -190,7 +190,7 @@
             "properties": {
                 "efoId": {
                     "type": "string",
-                    "description": "EFO/MONDO disease ID (e.g., EFO_0000384). Alternative to disease_name."
+                    "description": "EFO/MONDO disease ID (e.g., MONDO_0005011). Alternative to disease_name."
                 },
                 "ensemblId": {
                     "type": "string",
@@ -211,7 +211,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384",
+                "efoId": "MONDO_0005011",
                 "ensemblId": "ENSG00000141510"
             }
         ],
@@ -261,7 +261,7 @@
             "properties": {
                 "efoId": {
                     "type": "string",
-                    "description": "Disease EFO ID (e.g., 'EFO_0000384' for Crohn's disease). Alternative to disease_name."
+                    "description": "Disease EFO/MONDO ID (e.g., 'MONDO_0005011' for Crohn disease). Alternative to disease_name."
                 },
                 "ensemblId": {
                     "type": "string",
@@ -280,7 +280,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of datasource IDs to filter evidence. Examples: ['chembl', 'europepmc'], ['eva', 'clinvar'], ['intogen', 'cancer_gene_census']. Omit or pass empty array for all sources."
+                    "description": "List of datasource IDs to filter evidence. Examples: ['clinical_precedence', 'europepmc'], ['eva', 'clinvar'], ['intogen', 'cancer_gene_census']. Omit or pass empty array for all sources."
                 },
                 "size": {
                     "type": "integer",
@@ -294,7 +294,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384",
+                "efoId": "MONDO_0005011",
                 "ensemblId": "ENSG00000141510",
                 "datasourceIds": [
                     "europepmc"
@@ -302,10 +302,10 @@
                 "size": 10
             },
             {
-                "efoId": "EFO_0000389",
+                "efoId": "MONDO_0005012",
                 "ensemblId": "ENSG00000157764",
                 "datasourceIds": [
-                    "chembl"
+                    "clinical_precedence"
                 ],
                 "size": 5
             }
@@ -655,7 +655,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384",
+                "efoId": "MONDO_0005011",
                 "threshold": 1.0,
                 "size": 1
             }
@@ -921,7 +921,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384"
+                "efoId": "MONDO_0005011"
             }
         ],
         "return_schema": {
@@ -2355,7 +2355,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384"
+                "efoId": "MONDO_0005011"
             }
         ],
         "return_schema": {
@@ -2425,7 +2425,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384"
+                "efoId": "MONDO_0005011"
             }
         ],
         "return_schema": {
@@ -2495,7 +2495,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384"
+                "efoId": "MONDO_0005011"
             }
         ],
         "return_schema": {
@@ -2545,7 +2545,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384"
+                "efoId": "MONDO_0005011"
             }
         ],
         "return_schema": {
@@ -2612,7 +2612,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384"
+                "efoId": "MONDO_0005011"
             }
         ],
         "return_schema": {
@@ -2674,7 +2674,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "efoId": "EFO_0000384"
+                "efoId": "MONDO_0005011"
             }
         ],
         "return_schema": {
@@ -3252,7 +3252,7 @@
                 "chemblId"
             ]
         },
-        "query_schema": "\n      query drugSynonyms($chemblId: String!) {\n        drug(chemblId: $chemblId) {\n          id\n          name\n          synonyms\n        }\n      }\n    ",
+        "query_schema": "\n      query drugSynonyms($chemblId: String!) {\n        drug(chemblId: $chemblId) {\n          id\n          name\n          synonyms { label source }\n        }\n      }\n    ",
         "label": [
             "OpenTarget",
             "Drug Information",
@@ -3283,7 +3283,15 @@
                                 "synonyms": {
                                     "type": "array",
                                     "items": {
-                                        "type": "string"
+                                        "type": "object",
+                                        "properties": {
+                                            "label": {
+                                                "type": "string"
+                                            },
+                                            "source": {
+                                                "type": "string"
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -3308,7 +3316,7 @@
                 "chemblId"
             ]
         },
-        "query_schema": "\n      query drugTradeNames($chemblId: String!) {\n        drug(chemblId: $chemblId) {\n          id\n          name\n          tradeNames\n        }\n      }\n    ",
+        "query_schema": "\n      query drugTradeNames($chemblId: String!) {\n        drug(chemblId: $chemblId) {\n          id\n          name\n          tradeNames { label source }\n        }\n      }\n    ",
         "label": [
             "Drug",
             "OpenTarget",
@@ -3339,7 +3347,15 @@
                                 "tradeNames": {
                                     "type": "array",
                                     "items": {
-                                        "type": "string"
+                                        "type": "object",
+                                        "properties": {
+                                            "label": {
+                                                "type": "string"
+                                            },
+                                            "source": {
+                                                "type": "string"
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -3364,7 +3380,7 @@
                 "chemblId"
             ]
         },
-        "query_schema": "\n      query drugNames($chemblId: String!) {\n        drug(chemblId: $chemblId) {\n          id\n          name\n          tradeNames\n          synonyms\n        }\n      }\n    ",
+        "query_schema": "\n      query drugNames($chemblId: String!) {\n        drug(chemblId: $chemblId) {\n          id\n          name\n          tradeNames { label source }\n          synonyms { label source }\n        }\n      }\n    ",
         "return_schema": {
             "type": "object",
             "description": "Drug name information including generic name, trade names, and synonyms",
@@ -3389,14 +3405,30 @@
                                     "type": "array",
                                     "description": "List of trade names (brand names) for the drug",
                                     "items": {
-                                        "type": "string"
+                                        "type": "object",
+                                        "properties": {
+                                            "label": {
+                                                "type": "string"
+                                            },
+                                            "source": {
+                                                "type": "string"
+                                            }
+                                        }
                                     }
                                 },
                                 "synonyms": {
                                     "type": "array",
                                     "description": "List of synonyms for the drug, which may include alternative generic names and other identifiers",
                                     "items": {
-                                        "type": "string"
+                                        "type": "object",
+                                        "properties": {
+                                            "label": {
+                                                "type": "string"
+                                            },
+                                            "source": {
+                                                "type": "string"
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -4374,7 +4406,7 @@
         "type": "OpenTarget",
         "test_examples": [
             {
-                "entityId": "EFO_0000384",
+                "entityId": "MONDO_0005011",
                 "startYear": 2023,
                 "startMonth": 0,
                 "endYear": 2023,
