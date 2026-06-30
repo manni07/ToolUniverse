@@ -186,6 +186,34 @@ default_tool_files = {
     "esm2_variant_effect": os.path.join(
         current_dir, "data", "esm2_variant_effect_tools.json"
     ),
+    # AlphaGenome regulatory-genomics prediction (DeepMind hosted API, key-gated)
+    "alphagenome": os.path.join(current_dir, "data", "alphagenome_tools.json"),
+    # Evo 2 zero-shot variant scoring (NVIDIA NIM forward endpoint, key-gated)
+    "evo2_variant_effect": os.path.join(
+        current_dir, "data", "evo2_variant_effect_tools.json"
+    ),
+    # Two-sample Mendelian randomization estimators (local-compute, pure NumPy)
+    "mendelian_randomization": os.path.join(
+        current_dir, "data", "mendelian_randomization_tools.json"
+    ),
+    # Bayesian colocalization coloc.abf (local-compute, pure NumPy)
+    "colocalization": os.path.join(current_dir, "data", "colocalization_tools.json"),
+    # Single-causal fine-mapping (Wakefield ABF; local-compute, pure NumPy)
+    "finemap_abf": os.path.join(current_dir, "data", "finemap_abf_tools.json"),
+    # Pre-ranked GSEA gene-set enrichment (local-compute, pure NumPy)
+    "gsea_prerank": os.path.join(current_dir, "data", "gsea_prerank_tools.json"),
+    # TF/pathway activity inference (decoupleR ULM; local-compute, pure NumPy)
+    "decoupler_ulm": os.path.join(current_dir, "data", "decoupler_ulm_tools.json"),
+    # Single-sample GSEA signature scoring (local-compute, pure NumPy)
+    "ssgsea": os.path.join(current_dir, "data", "ssgsea_tools.json"),
+    # Gene Set Variation Analysis (local-compute, pure NumPy)
+    "gsva": os.path.join(current_dir, "data", "gsva_tools.json"),
+    # S-PrediXcan summary-based TWAS (local-compute, pure NumPy)
+    "spredixcan": os.path.join(current_dir, "data", "spredixcan_tools.json"),
+    # Co-expression module detection (local-compute, NumPy + NetworkX)
+    "coexpression_module": os.path.join(
+        current_dir, "data", "coexpression_module_tools.json"
+    ),
     # IUPred3 protein disorder prediction (sequence ML)
     "iupred3": os.path.join(current_dir, "data", "iupred3_tools.json"),
     # Ensembl VEP missense pathogenicity (AlphaMissense + SIFT + PolyPhen)
